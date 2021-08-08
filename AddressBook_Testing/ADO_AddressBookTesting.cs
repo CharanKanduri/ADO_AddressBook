@@ -74,5 +74,12 @@ namespace AddressBook_Testing
             string actual = addressBookRepo.SortDataBasedOnCity("Nellore");
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void GivenCountTypeQuery_ReturnString()
+        {
+            string expected = "1 1 2 1 ";
+            string actual = addressBookRepo.RetrivesBasedOnType();
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
