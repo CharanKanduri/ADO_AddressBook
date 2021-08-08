@@ -52,5 +52,13 @@ namespace AddressBook_Testing
             int actual = addressBookRepo.Delete();
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        [TestCategory("Retrive")]
+        public void GivenRetrieveQuery_ReturnString()
+        {
+            string expected = "Sripathi   Lakshmi    Bhanu      ";
+            string actual = addressBookRepo.Retrive("Nellore", "AP");
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

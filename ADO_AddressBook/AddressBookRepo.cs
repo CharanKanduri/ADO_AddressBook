@@ -90,7 +90,7 @@ namespace ADO_AddressBook
         {
             //Open Connection
             sqlConnection.Open();
-            string query = "delete from ContactInfo where FirstName = 'Srikar' and LastName = 'Kanduri'";
+            string query = "delete from ContactInfo where FirstName = 'Charan' and LastName = 'Kanduri'";
             //Pass query to TSql
             SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
             int result = sqlCommand.ExecuteNonQuery();
@@ -106,6 +106,40 @@ namespace ADO_AddressBook
             //Close Connection
             sqlConnection.Close();
             return result;
+        }
+        public string Retrive(string city, string State)
+        {
+            string nameList = "";
+            //query to be executed
+            string query = @"select * from ContactInfo where City =" + "'" + city + "' or State=" + "'" + State + "'";
+            SqlCommand sqlCommand = new SqlCommand(query, this.sqlConnection);
+            sqlConnection.Open();
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+            if (sqlDataReader.HasRows)
+            {
+                while (sqlDataReader.Read())
+                {
+                    DisplayEmployeeDetails(sqlDataReader);
+                    nameList += sqlDataReader["FirstName"].ToString() + " ";
+                }
+            }
+            return nameList;
+        }
+        public void DisplayEmployeeDetails(SqlDataReader reader)
+        {
+            addressAttributes.FirstName = Convert.ToString(reader["FirstName"]);
+            addressAttributes.LastName = Convert.ToString(reader["LastName"]);
+            addressAttributes.Address = Convert.ToString(reader["Address"]);
+            addressAttributes.City = Convert.ToString(reader["City"]);
+            addressAttributes.State = Convert.ToString(reader["State"]);
+            addressAttributes.zip = Convert.ToInt32(reader["Zip"]);
+            addressAttributes.PhoneNumber = Convert.ToInt32(reader["PhoneNumber"]);
+            addressAttributes.Email = Convert.ToString(reader["Email"]);
+            addressAttributes.AddressBookName = Convert.ToString(reader["AddressBookName"]);
+            addressAttributes.Type = Convert.ToString(reader["AddressBookType"]);
+
+            Console.WriteLine("{0} | {1} | {2} | {3} | {4} | {5} | {6} | {7} | {8} | {9}", addressAttributes.FirstName, addressAttributes.LastName, addressAttributes.Address, addressAttributes.City, addressAttributes.State, addressAttributes.PhoneNumber, addressAttributes.zip, addressAttributes.Email, addressAttributes.AddressBookName, addressAttributes.Type);
+
         }
 
 
