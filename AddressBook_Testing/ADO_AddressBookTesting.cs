@@ -10,7 +10,7 @@ namespace AddressBook_Testing
         AddressBookRepo addressBookRepo;
 
         [TestInitialize]
-        void SetUp()
+       public void SetUp()
         {
             addressBookRepo = new AddressBookRepo();
         }
@@ -36,6 +36,12 @@ namespace AddressBook_Testing
             int actual = addressBookRepo.Insert(addressAttributes);
             Assert.AreEqual(expected, actual);
         }
-        
+        [TestMethod]
+        public void EditTesting()
+        {
+            int expected = 1;
+            int actual = addressBookRepo.Edit();
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

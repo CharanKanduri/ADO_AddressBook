@@ -25,16 +25,7 @@ namespace ADO_AddressBook
                     //Declaring object for sql command and passing name of stored procedure and connection 
                     command.CommandType = System.Data.CommandType.StoredProcedure;
                     //Making command type as storedprocedure
-                    addressAttributes.FirstName = "Charan";
-                    addressAttributes.LastName = "Kanduri";
-                    addressAttributes.Address = "SaraswathiNagar";
-                    addressAttributes.City = "Nellore";
-                    addressAttributes.State = "AP";
-                    addressAttributes.zip = 524;
-                    addressAttributes.PhoneNumber = 98;
-                    addressAttributes.Email = "charan@gmail.com";
-                    addressAttributes.AddressBookName = "1_Book";
-                    addressAttributes.Type = "Self";
+                
 
                     command.Parameters.AddWithValue("@FirstName", addressAttributes.FirstName);
                     command.Parameters.AddWithValue("@LastName", addressAttributes.LastName);
@@ -72,52 +63,27 @@ namespace ADO_AddressBook
             Console.WriteLine(result);
             return result;
         }
-  
-        public void Display()
+
+        public int Edit()
         {
-            //opening the sql connection
-            this.sqlConnection.Open();
-            //create the query to display data
-            string query = @"select * from dbo.ContactInfo";
-            //create object for employee detail class
-            AddressAttributes addressAttributes = new AddressAttributes();
-            try
+            //Open Connection
+            sqlConnection.Open();
+            string query = "Update ContactInfo set Email = 'srikar.kanduri@gmail.com' where FirstName = 'Srikar'";
+           
+            SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+            int result = sqlCommand.ExecuteNonQuery();
+            if (result != 0)
             {
-                //create the sql command object nd pass the querry and connection
-                SqlCommand command = new SqlCommand(query, sqlConnection);
-                //create data reader 
-                SqlDataReader reader = command.ExecuteReader();
-                //if it has data
-                if (reader.HasRows)
-                {
-                    while (reader.Read())
-                    {
-                        addressAttributes.FirstName = Convert.ToString(reader["FirstName"]);
-                        addressAttributes.LastName = Convert.ToString(reader["LastName"]);
-                        addressAttributes.Address = Convert.ToString(reader["Address"] + " " + reader["City"] + " " + reader["State"] + " " + reader["zip"]);
-                        addressAttributes.PhoneNumber = Convert.ToInt64(reader["PhoneNumber"]);
-                        addressAttributes.Email = Convert.ToString(reader["email"]);
-                        addressAttributes.AddressBookName = Convert.ToString(reader["AddressBookName"]);
-                        addressAttributes.Type = Convert.ToString(reader["TypeOfAddressBook"]);
-                        Console.WriteLine("{0} | {1} | {2} | {3} | {4} | {5} | {6}", addressAttributes.FirstName, addressAttributes.LastName, addressAttributes.Address, addressAttributes.PhoneNumber, addressAttributes.Email, addressAttributes.AddressBookName, addressAttributes.Type);
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("No data vailable");
-                }
-                reader.Close();
+                Console.WriteLine("Updated!");
             }
-            //if any exception occurs catch and display exception message
-            catch (Exception e)
+            else
             {
-                Console.WriteLine(e.Message);
+                Console.WriteLine("Not Updated!");
             }
-            //finally close the connection
-            finally
-            {
-                this.sqlConnection.Close();
-            }
+            //Close Connection
+            sqlConnection.Close();
+            Console.WriteLine(result);
+            return result;
         }
 
 

@@ -11,14 +11,11 @@ namespace ADO_AddressBook
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to AddressBook ADO program");
-            AddressBookRepo addressBookRepo = new AddressBookRepo();
-            AddressAttributes addressAttributes = new AddressAttributes();
-
-            addressBookRepo.Insert(addressAttributes);
             DisplayContactInfo displayContactInfo = new DisplayContactInfo();
+            AddressBookRepo addressBookRepo = new AddressBookRepo();
+            addressBookRepo.Edit();
+            Console.WriteLine("\n\n");
             displayContactInfo.Display();
-            
-
 
 
         }
