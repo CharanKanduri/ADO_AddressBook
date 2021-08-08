@@ -67,5 +67,12 @@ namespace AddressBook_Testing
             string actual = addressBookRepo.CountDataBasedOnCity();
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void GivenSortQuery_ReturnString()
+        {
+            string expected = "Lakshmi    Sripathi   ";
+            string actual = addressBookRepo.SortDataBasedOnCity("Nellore");
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

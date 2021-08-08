@@ -159,6 +159,24 @@ namespace ADO_AddressBook
             }
             return nameList;
         }
+        public string SortDataBasedOnCity(string City)
+        {
+            string nameList = "";
+            //query to be executed
+            string query = "select * from ContactInfo where City='" + City + "' order by(FirstName)";
+            SqlCommand sqlCommand = new SqlCommand(query, this.sqlConnection);
+            sqlConnection.Open();
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+            if (sqlDataReader.HasRows)
+            {
+                while (sqlDataReader.Read())
+                {
+                    DisplayEmployeeDetails(sqlDataReader);
+                    nameList += sqlDataReader["FirstName"].ToString() + " ";
+                }
+            }
+            return nameList;
+        }
 
 
     }
