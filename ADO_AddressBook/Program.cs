@@ -6,12 +6,15 @@ using System.Text;
 
 namespace ADO_AddressBook
 {
-    class Program
+    public class Program
     {
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to AddressBook ADO program");
+        
+
+
         }
-       
+
     }
 }
