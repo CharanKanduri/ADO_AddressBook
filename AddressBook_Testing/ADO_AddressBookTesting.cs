@@ -37,10 +37,19 @@ namespace AddressBook_Testing
             Assert.AreEqual(expected, actual);
         }
         [TestMethod]
+        [TestCategory("Edit")]
         public void EditTesting()
         {
             int expected = 1;
             int actual = addressBookRepo.Edit();
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        [TestCategory("Delete")]
+        public void DeleteTesting()
+        {
+            int expected = 1;
+            int actual = addressBookRepo.Delete();
             Assert.AreEqual(expected, actual);
         }
     }

@@ -86,6 +86,28 @@ namespace ADO_AddressBook
             return result;
         }
 
+        public int Delete()
+        {
+            //Open Connection
+            sqlConnection.Open();
+            string query = "delete from ContactInfo where FirstName = 'Srikar' and LastName = 'Kanduri'";
+            //Pass query to TSql
+            SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+            int result = sqlCommand.ExecuteNonQuery();
+            if (result != 0)
+            {
+                Console.WriteLine("Updated!");
+            }
+            else
+            {
+                Console.WriteLine("Not Updated!");
+            }
+
+            //Close Connection
+            sqlConnection.Close();
+            return result;
+        }
+
 
     }
 }

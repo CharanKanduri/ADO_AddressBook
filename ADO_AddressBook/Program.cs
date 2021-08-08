@@ -12,8 +12,6 @@ namespace ADO_AddressBook
         {
             Console.WriteLine("Welcome to AddressBook ADO program");
             DisplayContactInfo displayContactInfo = new DisplayContactInfo();
-            AddressBookRepo addressBookRepo = new AddressBookRepo();
-            addressBookRepo.Edit();
             Console.WriteLine("\n\n");
             displayContactInfo.Display();
 
