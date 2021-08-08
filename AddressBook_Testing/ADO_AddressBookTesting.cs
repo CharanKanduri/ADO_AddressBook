@@ -60,5 +60,12 @@ namespace AddressBook_Testing
             string actual = addressBookRepo.Retrive("Nellore", "AP");
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void GivenCountQuery_ReturnString()
+        {
+            string expected = "1 1 2 1 ";
+            string actual = addressBookRepo.CountDataBasedOnCity();
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

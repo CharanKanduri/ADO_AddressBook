@@ -141,6 +141,24 @@ namespace ADO_AddressBook
             Console.WriteLine("{0} | {1} | {2} | {3} | {4} | {5} | {6} | {7} | {8} | {9}", addressAttributes.FirstName, addressAttributes.LastName, addressAttributes.Address, addressAttributes.City, addressAttributes.State, addressAttributes.PhoneNumber, addressAttributes.zip, addressAttributes.Email, addressAttributes.AddressBookName, addressAttributes.Type);
 
         }
+        public string CountDataBasedOnCity()
+        {
+            string nameList = "";
+            //query to be executed
+            string query = @"select Count(*),state,City from ContactInfo Group by state,City";
+            SqlCommand sqlCommand = new SqlCommand(query, this.sqlConnection);
+            sqlConnection.Open();
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+            if (sqlDataReader.HasRows)
+            {
+                while (sqlDataReader.Read())
+                {
+                    Console.WriteLine("{0} \t {1} \t {2}", sqlDataReader[0], sqlDataReader[1], sqlDataReader[2]);
+                    nameList += sqlDataReader[0].ToString() + " ";
+                }
+            }
+            return nameList;
+        }
 
 
     }
