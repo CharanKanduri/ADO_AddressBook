@@ -42,7 +42,7 @@ namespace ADO_AddressBook
                 }
                 
             }
-            Console.WriteLine(nameList);
+            
             return nameList;
 
         }

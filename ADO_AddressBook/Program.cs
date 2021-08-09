@@ -11,13 +11,8 @@ namespace ADO_AddressBook
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to AddressBook ADO program");
-            DisplayContactInfo displayContactInfo = new DisplayContactInfo();
-            AddressBookRepo addressBookRepo = new AddressBookRepo();
-            addressBookRepo.Retrive("Nellore","AP");
-            displayContactInfo.Display();
-            Console.WriteLine("\n\n\n");
-            AddressBookAfterER addressBookAfterER = new AddressBookAfterER();
-            addressBookAfterER.PrintDataBasedOnCityAfterER("Nellore", "AP");
+         
+       
 
 
 
