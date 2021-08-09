@@ -8,11 +8,13 @@ namespace AddressBook_Testing
     public class ADO_AddressBookTesting
     {
         AddressBookRepo addressBookRepo;
+        AddressBookAfterER addressBookAfterER;
 
         [TestInitialize]
        public void SetUp()
         {
             addressBookRepo = new AddressBookRepo();
+            addressBookAfterER = new AddressBookAfterER();
         }
 
         [TestMethod]
@@ -79,6 +81,16 @@ namespace AddressBook_Testing
         {
             string expected = "1 1 2 1 ";
             string actual = addressBookRepo.RetrivesBasedOnType();
+            Assert.AreEqual(expected, actual);
+        }
+
+        //After ER
+
+        [TestMethod]
+        public void AddContactToAllTypes_UsingER_ReturnString()
+        {
+            string expected = "Kamal      R          Vishnu     Jss        Sripathi   Kanduri    Jason      Paul       Ashwin     Ravi       Lakshimi   Kanduri    ";
+            string actual = addressBookAfterER.AddPersonToAllTypes();
             Assert.AreEqual(expected, actual);
         }
     }
