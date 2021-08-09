@@ -15,6 +15,9 @@ namespace ADO_AddressBook
             AddressBookRepo addressBookRepo = new AddressBookRepo();
             addressBookRepo.Retrive("Nellore","AP");
             displayContactInfo.Display();
+            Console.WriteLine("\n\n\n");
+            AddressBookAfterER addressBookAfterER = new AddressBookAfterER();
+            addressBookAfterER.PrintDataBasedOnCityAfterER("Nellore", "AP");
 
 
 
