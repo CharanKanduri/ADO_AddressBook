@@ -100,13 +100,23 @@ namespace AddressBook_Testing
 
         //Transactions
 
-        //UC 11: Add Date_Added Column if Contad_ID>2
+       
         [TestMethod]
         public void GivenUpdateQuery_UsingTransaction_ContadIDGreaterthan2_ReturnInt()
         {
             Transactions transactions = new Transactions();
             int expected = 4;
             int actual = transactions.SetStartDateValue("update Contact_Person set Date_Added='2017-09-12' where ContactID > 2");
+            Assert.AreEqual(expected, actual);
+        }
+        //Threads
+
+        [TestMethod]
+        public void GivenSelectQuery_UsingTransaction_ReturnCount()
+        {
+            Transactions transactions = new Transactions();
+            int expected = 6;
+            int actual = transactions.AddMultipleDataToList();
             Assert.AreEqual(expected, actual);
         }
     }
