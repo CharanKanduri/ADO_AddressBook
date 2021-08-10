@@ -11,11 +11,7 @@ namespace ADO_AddressBook
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to AddressBook ADO program");
-         
        
-
-
-
         }
 
     }

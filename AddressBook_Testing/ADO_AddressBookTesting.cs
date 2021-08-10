@@ -9,12 +9,16 @@ namespace AddressBook_Testing
     {
         AddressBookRepo addressBookRepo;
         AddressBookAfterER addressBookAfterER;
+        Transactions transactions;
+
 
         [TestInitialize]
        public void SetUp()
         {
             addressBookRepo = new AddressBookRepo();
             addressBookAfterER = new AddressBookAfterER();
+            transactions = new Transactions();
+
         }
 
         [TestMethod]
@@ -91,6 +95,18 @@ namespace AddressBook_Testing
         {
             string expected = "Kamal      R          Vishnu     Jss        Sripathi   Kanduri    Jason      Paul       Ashwin     Ravi       Lakshimi   Kanduri    ";
             string actual = addressBookAfterER.AddPersonToAllTypes();
+            Assert.AreEqual(expected, actual);
+        }
+
+        //Transactions
+
+        //UC 11: Add Date_Added Column if Contad_ID>2
+        [TestMethod]
+        public void GivenUpdateQuery_UsingTransaction_ContadIDGreaterthan2_ReturnInt()
+        {
+            Transactions transactions = new Transactions();
+            int expected = 4;
+            int actual = transactions.SetStartDateValue("update Contact_Person set Date_Added='2017-09-12' where ContactID > 2");
             Assert.AreEqual(expected, actual);
         }
     }
